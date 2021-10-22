@@ -17,7 +17,10 @@ namespace IndiaStateCensus
             int count = 0;
             try
             {
-                
+                if (Path.GetExtension(statesCodePath) != ".csv")
+                {
+                    throw new StateCensusException(StateCensusException.InvalidCenusdetails.INCORRECT_FILE_TYPE, "Incorrect File Type");
+                }
                 if (!File.Exists(stateCensusCodeFilePath))
                 {
                     throw new StateCensusException(StateCensusException.InvalidCenusdetails.FILE_NOT_FOUND, "File Not Found");
@@ -61,6 +64,11 @@ namespace IndiaStateCensus
             int countRecords = 0;
             try
             {
+                if (Path.GetExtension(statesCodePath) != ".csv")
+                {
+                    throw new StateCensusException(StateCensusException.InvalidCenusdetails.INCORRECT_FILE_TYPE, "Incorrect File Type");
+                }
+
                 if (!File.Exists(statesCodePath))
                 {
                     throw new StateCensusException(StateCensusException.InvalidCenusdetails.FILE_NOT_FOUND, "File Not Found");
